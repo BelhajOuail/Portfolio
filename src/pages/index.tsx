@@ -5,7 +5,7 @@ import { IoMdMail } from 'react-icons/io';
 
 const HomePage = () => {
   return (
-    <div id="top">
+    <div>
       {/* Hero */}
       <section className="section hero">
         <div className="container hero__grid">
