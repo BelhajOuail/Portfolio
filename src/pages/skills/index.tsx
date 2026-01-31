@@ -51,14 +51,11 @@ const SkillsPage = () => {
     []
   );
 
-  const [open, setOpen] = useState<Record<string, boolean>>(() => {
-    const initial: Record<string, boolean> = {};
-    categories.forEach((c) => (initial[c.title] = false));
-    if (categories[0]) initial[categories[0].title] = true; // first open
-    return initial;
-  });
+  const [open, setOpen] = useState<Record<number, boolean>>({});
 
-  const toggle = (key: string) => setOpen((p) => ({ ...p, [key]: !p[key] }));
+  const toggle = (index: number) => {
+    setOpen((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
 
   return (
     <div className="site">
@@ -74,8 +71,8 @@ const SkillsPage = () => {
             </div>
 
             <div className="skills-grid">
-              {categories.map((cat) => {
-                const isOpen = !!open[cat.title];
+              {categories.map((cat, index) => {
+                const isOpen = !!open[index];
 
                 return (
                   <article key={cat.title} className="card skills-card">
@@ -84,6 +81,7 @@ const SkillsPage = () => {
                         <span className="skills-icon" aria-hidden="true">
                           {cat.icon}
                         </span>
+
                         <div>
                           <h2 className="card__title skills-card__title">{cat.title}</h2>
                           <p className="skills-card__desc">{cat.description}</p>
@@ -93,9 +91,9 @@ const SkillsPage = () => {
                       <button
                         type="button"
                         className="skills-toggle"
-                        onClick={() => toggle(cat.title)}
+                        onClick={() => toggle(index)}
                         aria-expanded={isOpen}
-                        aria-controls={`panel-${cat.title}`}
+                        aria-controls={`panel-${index}`}
                       >
                         {isOpen ? (
                           <>
@@ -111,7 +109,10 @@ const SkillsPage = () => {
                       </button>
                     </header>
 
-                    <div id={`panel-${cat.title}`} className={`skills-panel ${isOpen ? 'skills-panel--open' : ''}`}>
+                    <div
+                      id={`panel-${index}`}
+                      className={`skills-panel ${isOpen ? 'skills-panel--open' : ''}`}
+                    >
                       <div className="skills-list">
                         {cat.skills.map((skill) => (
                           <div key={skill.name} className="skills-item">
@@ -132,7 +133,8 @@ const SkillsPage = () => {
 
             <div className="skills-bottom">
               <Link href="/" className="btn btn--secondary">
-                Back to home
+                <span className="btn__icon">←</span>
+                <span>Back to home</span>
               </Link>
             </div>
           </div>

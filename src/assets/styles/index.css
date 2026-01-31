@@ -509,6 +509,7 @@ a {
   flex-wrap: wrap;
 }
 
+
 /* responsive */
 @media (max-width: 900px) {
   .skills-grid {
