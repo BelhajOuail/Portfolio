@@ -25,7 +25,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <div className="site">
+    <div className="site" id="top">
       <header className="site-header">
         <div className="container header-row">
           <Link href="/" className="brand" aria-label="Go to home">
