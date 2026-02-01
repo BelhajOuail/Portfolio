@@ -22,7 +22,7 @@ const SkillsPage = () => {
       description: 'APIs with clear structure, validation and data handling.',
       skills: [
         { name: '.NET', details: ['ASP.NET Core', 'Entity Framework'] },
-        { name: 'Node.js', details: ['REST', 'JWT basics'] },
+        { name: 'Node.js', details: ['REST', 'JWT basics', 'Express'] },
         { name: 'Databases', details: ['MongoDB', 'SQL'] },
       ],
     },

@@ -17,8 +17,7 @@ const HomePage = () => {
               I build clean web apps.
             </h1>
             <p className="hero__subtitle">
-              This portfolio uses a clean and professional layout. Additional pages will be added later, 
-              along with updates about my internship @ Tillit.
+              Full-stack developer based in Belgium. Currently finishing my studies and interning at Tillit. More projects and updates coming soon.
             </p>
             <div className="hero__cta">
               <Link href="/about" className="btn btn--primary">
@@ -59,7 +58,7 @@ const HomePage = () => {
           <div className="section__head">
             <h2 className="section__title">What you’ll find here</h2>
             <p className="section__subtitle">
-              A clear navigation, consistent spacing, and a responsive layout.
+              Explore my background, technical skills, and projects I've built.
             </p>
           </div>
 
