@@ -168,6 +168,8 @@ a {
 .section--muted {
   background: var(--muted);
   border-top: 1px solid var(--border);
+  background: radial-gradient(circle at 95% 5%, rgba(37, 99, 235, 0.08), transparent 45%),
+              #fff;
 }
 
 .section__head {
@@ -317,6 +319,7 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin-top: 18px;
+  
 }
 
 .card {
@@ -326,6 +329,7 @@ a {
   padding: 18px;
   box-shadow: 0 10px 24px rgba(2, 6, 23, 0.05);
   transition: transform 180ms ease, box-shadow 180ms ease;
+  
 }
 
 .card:hover {
@@ -388,6 +392,66 @@ a {
 
 
 /* Skills page (matches existing style) */
+
+/* Bio Section */
+.bio-section {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.05);
+  margin-bottom: 22px;
+  background: radial-gradient(circle at 95% 5%, rgba(37, 99, 235, 0.08), transparent 45%),#fff;
+}
+
+.bio-content {
+  max-width: 100%;
+}
+
+.bio-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 16px;
+  color: var(--text);
+}
+
+.bio-text {
+  color: var(--subtext);
+  line-height: 1.6;
+  margin: 0 0 14px;
+  max-width: 75ch;
+}
+
+.bio-text:last-of-type {
+  margin-bottom: 20px;
+}
+
+.bio-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.bio-highlight {
+  padding: 12px 16px;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--subtext);
+  font-size: 14px;
+}
+
+.bio-highlight strong {
+  color: var(--text);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -555,6 +619,14 @@ a {
   }
 
   .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-section {
+    padding: 24px;
+  }
+
+  .bio-highlights {
     grid-template-columns: 1fr;
   }
 }
