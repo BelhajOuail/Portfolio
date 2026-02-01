@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FaReact, FaCode, FaShieldAlt, FaTools, FaPlus, FaMinus } from 'react-icons/fa';
+import { FaReact, FaCode, FaShieldAlt, FaTools, FaGamepad, FaWallet, FaPlus, FaMinus, FaExternalLinkAlt } from 'react-icons/fa';
 
 
 
@@ -47,7 +47,23 @@ const SkillsPage = () => {
     },
   ];
 
-  // Gebruik een Set voor betere performance en type safety
+const projects = [
+  {
+    title: 'Zonkytown',
+    url: 'https://zonkytown.koyeb.app',
+    icon: <FaGamepad size={24} />,
+    description: 'A Fortnite character viewer where you can browse characters, save favorites, add items, and track scores.',
+    tech: ['React', 'Node.js', 'MongoDB', 'Auth'],
+  },
+  {
+    title: 'Terminal',
+    url: 'https://terminal.koyeb.app',
+    icon: <FaWallet size={24} />,
+    description: 'A banking app to log and track your expenses with secure login and registration.',
+    tech: ['React', 'Node.js', 'Database', 'JWT'],
+  }
+];
+
   const [openCategories, setOpenCategories] = useState(new Set());
 
   // Functie om een categorie te openen/sluiten
@@ -76,33 +92,6 @@ const SkillsPage = () => {
               </p>
             </div>
 
-            <div className="bio-section">
-              <div className="bio-content">
-                <h2 className="bio-title">About Me</h2>
-                <p className="bio-text">
-                  I was six years old when I first played on a computer. Eighteen years later,
-                  the childish curiosity remains. What started as fascination evolved into
-                  a passion for computers and coding.
-                </p>
-                <p className="bio-text">
-                  Currently finishing my Graduate in Programming at Artesis Plantijn,
-                  building on my Bachelor's in Applied Computer Sciences with a focus on Mixed Reality.
-                  I'm motivated to continue expanding my knowledge in the IT field.
-                </p>
-
-                <div className="bio-highlights">
-                  <div className="bio-highlight">
-                    <strong>Location:</strong> Antwerp
-                  </div>
-                  <div className="bio-highlight">
-                    <strong>Education:</strong> Graduate Programming (AP Hogeschool)
-                  </div>
-                  <div className="bio-highlight">
-                    <strong>Focus:</strong> Full-stack Development
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div className="skills-grid">
               {categories.map((category, index) => {
@@ -159,6 +148,46 @@ const SkillsPage = () => {
               })}
             </div>
 
+            {/* PROJECTS SECTIE */}
+            <div className="projects-section">
+              <h2 className="projects-title">Projects</h2>
+              <p className="projects-subtitle">
+                Web applications I've built with authentication and interactive features.
+              </p>
+
+              <div className="projects-grid">
+                {projects.map((project) => (
+                  <article key={project.title} className="project-card card">
+                    <div className="project-card__icon">
+                      {project.icon}
+                    </div>
+
+                    <h3 className="project-card__title">{project.title}</h3>
+                    <p className="project-card__desc">{project.description}</p>
+
+                    <div className="project-tech">
+                      {project.tech.map((tech) => (
+                        <span key={tech} className="project-tech__tag">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn--primary project-card__btn"
+                    >
+                      <span>Visit Project</span>
+                      <FaExternalLinkAlt size={14} />
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+
             <div className="skills-bottom">
               <Link href="/" className="btn btn--secondary">
                 <span className="btn__icon">←</span>
@@ -168,7 +197,7 @@ const SkillsPage = () => {
           </div>
         </section>
       </main>
-    </div>
+    </div >
   );
 };
 
