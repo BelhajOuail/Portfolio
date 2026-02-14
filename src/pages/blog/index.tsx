@@ -33,89 +33,76 @@ const sprints: Sprint[] = [
         title: 'Sprint 1 - Week 1: Learning and testing new AI, Data, and .NET tools',
         date: 'February 2026',
         introPoints: [
-          'During week 1, we focused on research and technical experimentation.',
-          'Our goal was to understand the tools and architecture before implementing production features.',
-          'This foundation will help us work faster and with better quality in the coming weeks.',
+          'During week 1, we focused mainly on research and technical experimentation. Our goal was to understand the tools and overall architecture before building real production features.',
+           'This foundation should help us move faster and with better quality in the coming weeks.',
         ],
         tags: ['Sprint 1', 'AI', 'RAG', 'MCP', 'Ollama', 'Azure DevOps'],
         sections: [
           {
-            title: 'Deep dive into AI technologies',
+            title: 'Exploring AI Technologies',
             points: [
-              'We explored Semantic Kernel to understand how AI capabilities can be structured in an application.',
-              'We also studied MCP (Model Context Protocol) to understand how context is exchanged between systems.',
-              'We decided to begin with a local LLM before moving to cloud-based models.',
+              'We explored Semantic Kernel to understand how AI capabilities can be structured within an application.',
+              'We also looked into MCP (Model Context Protocol) to see how context is exchanged between systems.',
+              'To keep things manageable, we decided to start with a local LLM before moving to cloud-based models.',
             ],
           },
           {
-            title: 'Experimenting with a local LLM',
+            title: 'Working with a Local LLM',
             points: [
-              'We started with a SQL database to store and retrieve data.',
-              'Next, we configured a local model in Ollama to use that data.',
-              'We built small demo apps where users could ask questions.',
-              'Using the same use cases, we evaluated multiple models and prompt strategies.',
-              'We compared speed, accuracy and response consistency.',
+              'We began with a SQL database to store and retrieve data. After that, we configured a local model in Ollama and connected it to our data.',
+              'We built small demo apps where users could ask questions based on the database. Using the same use cases, we tested different models and prompt strategies, comparing speed, accuracy, and response consistency.',
               'Main lesson: clear prompts improve answer quality, and local LLMs can be more limited than cloud LLMs.',
             ],
           },
           {
-            title: 'Introduction to vectorization and RAG',
+            title: 'Vectorization and RAG',
             points: [
-              'We learned how text can be transformed into embeddings (vectors).',
-              'With semantic search, we retrieved the most relevant context for each query.',
-              'We also studied how RAG combines an LLM with external knowledge.',
-              'When context was added, responses were generally clearer and more reliable.',
-              'This showed us the difference between normal prompting and context-based prompting.',
+              'We learned how text can be converted into embeddings (vectors) and how semantic search can retrieve the most relevant context for a query.',
+              'We also explored how RAG combines an LLM with external knowledge. Once we started adding context to prompts, responses became clearer and more reliable. This helped us understand the difference between simple prompting and context-based prompting.',
             ],
           },
           {
-            title: 'Agile process and collaboration',
+            title: 'Agile Process and Collaboration',
             points: [
-              'Every day at 9:00, we held a stand-up to discuss progress and blockers.',
-              'We split tasks using a simple agile workflow.',
-              'In Azure DevOps, we managed user stories, tasks, and repositories.',
-              'We also planned early for future integration and merge work between applications.',
-              'This gave us a clear view of real team collaboration.',
+              'Every day at 9:00, we held a stand-up to discuss progress and blockers. Tasks were divided using a simple agile workflow.',
+              'In Azure DevOps, we managed user stories, tasks, and repositories. We also started thinking ahead about integration and merging work between applications, which gave us a realistic view of team collaboration.',
             ],
           },
         ],
         reflectionTitle: 'Short reflection',
         reflectionPoints: [
-          'The first week was intensive but highly educational.',
-          'We had enough space to explore independently and received solid guidance whenever we were blocked.',
-          'By the end of the week, we had built a strong foundation for the rest of the sprint.',
+          'The first week was intensive but very educational.',
+          'We had the space to explore independently and received solid guidance whenever we were stuck. By the end of the week, we had built a strong foundation for the rest of the sprint.',
+          'I’m really happy to be part of this team. The team is very helpful and professional, which makes it easier to learn, ask questions, and improve quickly. Let’s get started!'
         ],
       },
       {
         week: 2,
-        title: 'Sprint 1 - Week 2: Implementation and first integrations',
+        title: 'Sprint 1 - Week 2: Implementation and First Integrations',
         date: 'February 2026',
         introPoints: [
-          'In week 2, we shifted from research to implementation.',
-          'Step by step, we turned our demo apps into functional components.',
-          'After the research phase, our objective was to deliver two working applications.',
+          'In week 2, we moved from research into actual building. Step by step, we turned our demo apps into working components.',
+          'After finishing the research phase, our goal was simple: get two working basic applications up and running.',
         ],
         tags: ['Sprint 1', 'SQL', 'Vectorization', 'API', 'LLM', 'Unit Tests', 'Dapper'],
         sections: [
           {
-            title: 'Week 2 focus',
+            title: 'Week 2 Focus',
             points: [
-              'We improved our earlier demo apps and made them more stable.',
-              'We clarified how the frontend, backend, and AI workflow connect end-to-end.',
-              'We aligned on technical choices for the next sprint.',
+              'This week was mainly about improving the earlier demos and making them more stable. We also clarified how the frontend, backend, and AI workflow connect from end to end.',
+              'At the same time, we aligned on the technical choices that will guide the next sprint.'
             ],
           },
           {
-            title: 'Two apps after the research phase',
+            title: 'Two Applications',
             points: [
-              'After the research phase, we built two applications with different goals.',
-              'The first application used a traditional SQL database setup.',
-              'The second application used a vectorized SQL setup for semantic search.',
-              'This allowed us to compare standard querying with context-based retrieval.',
+              'We developed two applications with distinct goals:',
+              'The first application used a traditional SQL database setup. The second application used a vectorized SQL setup for semantic search.',
+              'This lets us compare classic querying with context-based retrieval.',
             ],
           },
           {
-            title: 'What we implemented concretely',
+            title: 'What We Actually Built',
             points: [
               'For the first application, we created a stable SQL connection for the chat workflow.',
               'We provided the LLM with table and column context so it could generate better SQL queries.',
@@ -129,8 +116,9 @@ const sprints: Sprint[] = [
         ],
         reflectionTitle: 'Short reflection',
         reflectionPoints: [
-          'We moved from loose demo apps to practical building blocks.',
-          'The architecture is now much clearer than it was in week 1.',
+          'This week, we moved from demo experiments to solid building blocks, and the architecture is much clearer than in week 1.',
+          'We did struggle with setting up unit testing. Our pipeline required at least 80% code coverage, which was harder than expected. It took extra time, but it pushed us to structure the code better and improve overall quality.',
+          'I managed to complete my tasks for this sprint and built the full API, connecting the database and chat workflow end-to-end. Sprint 1 succesfull!'
         ],
       },
     ],
