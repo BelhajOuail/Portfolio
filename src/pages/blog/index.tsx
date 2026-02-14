@@ -91,7 +91,7 @@ const sprints: Sprint[] = [
         date: 'February 2026',
         introPoints: [
           'In week 2, we moved from research to building.',
-          'We turned our tests into working parts step by step.',
+          'We turned our demo-apps into working parts step by step.',
           'After the research phase, we had to deliver two apps.',
         ],
         tags: ['Sprint 1', 'SQL', 'Vectorization', 'API', 'LLM', 'Unit Tests', 'Dapper'],
@@ -99,7 +99,7 @@ const sprints: Sprint[] = [
           {
             title: 'Week 2 focus',
             points: [
-              'We improved earlier tests and made them more stable.',
+              'We improved earlier demo-apps and made them more stable.',
               'We defined how frontend, backend, and AI flow connect.',
               'We agreed on technical choices for the next sprint.',
             ],
@@ -128,7 +128,7 @@ const sprints: Sprint[] = [
         ],
         reflectionTitle: 'Short reflection',
         reflectionPoints: [
-          'We moved from loose tests to real building blocks.',
+          'We moved from loose demo-apps to real building blocks.',
           'The architecture is now clearer than in week 1.',
         ],
       },
