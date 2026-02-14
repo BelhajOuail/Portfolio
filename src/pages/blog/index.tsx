@@ -33,56 +33,57 @@ const sprints: Sprint[] = [
         title: 'Sprint 1 - Week 1: Learning and testing new AI, Data, and .NET tools',
         date: 'February 2026',
         introPoints: [
-          'In week 1, we mainly researched and tested new tools.',
-          'We wanted to understand everything first before building real features.',
-          'This helps us work faster and better in the next weeks.',
+          'During week 1, we focused on research and technical experimentation.',
+          'Our goal was to understand the tools and architecture before implementing production features.',
+          'This foundation will help us work faster and with better quality in the coming weeks.',
         ],
         tags: ['Sprint 1', 'AI', 'RAG', 'MCP', 'Ollama', 'Azure DevOps'],
         sections: [
           {
             title: 'Deep dive into AI technologies',
             points: [
-              'We looked at Semantic Kernel to learn how to organize AI features in an app.',
-              'We also studied MCP (Model Context Protocol) to understand how context moves between systems.',
-              'We chose to start with a local LLM instead of going straight to a cloud model.',
+              'We explored Semantic Kernel to understand how AI capabilities can be structured in an application.',
+              'We also studied MCP (Model Context Protocol) to understand how context is exchanged between systems.',
+              'We decided to begin with a local LLM before moving to cloud-based models.',
             ],
           },
           {
             title: 'Experimenting with a local LLM',
             points: [
               'We started with a SQL database to store and retrieve data.',
-              'Then we set up a local model with Ollama to use that data.',
-              'We built small test apps where users could ask questions.',
-              'We tested different models and prompts with the same test cases.',
-              'We compared speed, accuracy, and consistency.',
-              'Main lesson: clear prompts give better answers, and local LLMs can be more limited than cloud LLMs.',
+              'Next, we configured a local model in Ollama to use that data.',
+              'We built small demo apps where users could ask questions.',
+              'Using the same use cases, we evaluated multiple models and prompt strategies.',
+              'We compared speed, accuracy and response consistency.',
+              'Main lesson: clear prompts improve answer quality, and local LLMs can be more limited than cloud LLMs.',
             ],
           },
           {
             title: 'Introduction to vectorization and RAG',
             points: [
-              'We learned how text can be turned into embeddings (vectors).',
-              'With semantic search, we found the most relevant context.',
-              'We also learned how RAG works: combining an LLM with external data.',
-              'When we added context, answers were usually clearer and more stable.',
+              'We learned how text can be transformed into embeddings (vectors).',
+              'With semantic search, we retrieved the most relevant context for each query.',
+              'We also studied how RAG combines an LLM with external knowledge.',
+              'When context was added, responses were generally clearer and more reliable.',
               'This showed us the difference between normal prompting and context-based prompting.',
             ],
           },
           {
             title: 'Agile process and collaboration',
             points: [
-              'Every day at 9:00, we had a stand-up to discuss progress and blockers.',
+              'Every day at 9:00, we held a stand-up to discuss progress and blockers.',
               'We split tasks using a simple agile workflow.',
               'In Azure DevOps, we managed user stories, tasks, and repositories.',
-              'We also planned early for future merges between apps.',
+              'We also planned early for future integration and merge work between applications.',
               'This gave us a clear view of real team collaboration.',
             ],
           },
         ],
         reflectionTitle: 'Short reflection',
         reflectionPoints: [
-          'The first week was intense, but very educational. We had enough room to research and test things ourselves, and we received good guidance whenever we got stuck.',
-          'We built a strong foundation for the rest of the sprint.',
+          'The first week was intensive but highly educational.',
+          'We had enough space to explore independently and received solid guidance whenever we were blocked.',
+          'By the end of the week, we had built a strong foundation for the rest of the sprint.',
         ],
       },
       {
@@ -90,46 +91,46 @@ const sprints: Sprint[] = [
         title: 'Sprint 1 - Week 2: Implementation and first integrations',
         date: 'February 2026',
         introPoints: [
-          'In week 2, we moved from research to building.',
-          'We turned our demo-apps into working parts step by step.',
-          'After the research phase, we had to deliver two apps.',
+          'In week 2, we shifted from research to implementation.',
+          'Step by step, we turned our demo apps into functional components.',
+          'After the research phase, our objective was to deliver two working applications.',
         ],
         tags: ['Sprint 1', 'SQL', 'Vectorization', 'API', 'LLM', 'Unit Tests', 'Dapper'],
         sections: [
           {
             title: 'Week 2 focus',
             points: [
-              'We improved earlier demo-apps and made them more stable.',
-              'We defined how frontend, backend, and AI flow connect.',
-              'We agreed on technical choices for the next sprint.',
+              'We improved our earlier demo apps and made them more stable.',
+              'We clarified how the frontend, backend, and AI workflow connect end-to-end.',
+              'We aligned on technical choices for the next sprint.',
             ],
           },
           {
             title: 'Two apps after the research phase',
             points: [
-              'After the research phase, we built two apps with different goals.',
-              'The first app used a regular SQL database.',
-              'The second app used a vectorized SQL setup for semantic search.',
-              'This helped us compare normal queries with context-based retrieval.',
+              'After the research phase, we built two applications with different goals.',
+              'The first application used a traditional SQL database setup.',
+              'The second application used a vectorized SQL setup for semantic search.',
+              'This allowed us to compare standard querying with context-based retrieval.',
             ],
           },
           {
             title: 'What we implemented concretely',
             points: [
-              'For the first app, we created a stable SQL connection for our chat app.',
-              'We gave the LLM table and column context so it could create better SQL queries.',
-              'We started with a console app and then moved it to a working API with database and chat logic.',
+              'For the first application, we created a stable SQL connection for the chat workflow.',
+              'We provided the LLM with table and column context so it could generate better SQL queries.',
+              'We started with a console prototype and then moved to a working API with database and chat logic.',
               'We added unit tests to keep this flow reliable.',
-              'For the second app, we prepared data for vector search and tested semantic results.',
-              'We compared both apps on speed, accuracy, and error handling.',
+              'For the second application, we prepared data for vector search and tested semantic retrieval results.',
+              'We compared both applications in terms of speed, accuracy, and error handling.',
               'In future sprints, we will choose which app direction to continue.',
             ],
           },
         ],
         reflectionTitle: 'Short reflection',
         reflectionPoints: [
-          'We moved from loose demo-apps to real building blocks.',
-          'The architecture is now clearer than in week 1.',
+          'We moved from loose demo apps to practical building blocks.',
+          'The architecture is now much clearer than it was in week 1.',
         ],
       },
     ],
@@ -159,9 +160,9 @@ const BlogsPage = () => {
           <div className="container">
             <div className="section__head">
               <p className="eyebrow">Blog</p>
-              <h1 className="section__title">Latest Blog Posts</h1>
+              <h1 className="section__title">My Internship Journey</h1>
               <p className="section__subtitle">
-                Project updates, sprint reflections, and technical insights from my learning process.
+                Objective: Developing a GenAI application for data analysis and visualization through an interactive chat interface.
               </p>
             </div>
 
