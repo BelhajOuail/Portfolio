@@ -81,7 +81,7 @@ const HomePage = () => {
 
             <article className="card">
               <h3 className="card__title">Blog</h3>
-              <p className="card__text">Optional: posts about projects, learnings, and internship updates.</p>
+              <p className="card__text">Weekly updates on my GenAI project at my internship.</p>
               <Link href="/blog" className="card__link">
                 Go to Blog →
               </Link>
@@ -104,12 +104,10 @@ const HomePage = () => {
               <a className="contact__value" href="mailto:example@email.com">
                 example@email.com
               </a>
-              <p className="contact__hint">Tip: we can replace this with your real email later.</p>
             </div>
             <div className="contact__card">
               <p className="contact__label">Location</p>
               <p className="contact__value">Belgium</p>
-              <p className="contact__hint">Optional: add your city (Antwerpen, Brussel, ...)</p>
             </div>
           </div>
         </div>
