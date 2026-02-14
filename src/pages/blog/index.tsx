@@ -98,7 +98,7 @@ const sprints: Sprint[] = [
             points: [
               'We developed two applications with distinct goals:',
               'The first application used a traditional SQL database setup. The second application used a vectorized SQL setup for semantic search.',
-              'This lets us compare classic querying with context-based retrieval.',
+              'This lets us compare classic querying with context-based retrieval. We also continued working with a cloud-based LLM instead of only using a local model.',
             ],
           },
           {
