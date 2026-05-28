@@ -341,7 +341,7 @@ const sprints: Sprint[] = [
         date: 'April 2026',
         introPoints: [
           'In the first week of sprint 4, we started working on what was probably the most difficult task of the entire internship project.',
-          'The company had already indicated that this part would be especially challenging, because it requires us to apply flexible security rules to external data sources inside the application.',
+          'The company had already indicated that this part would be especially challenging, since it requires us to apply flexible security rules to external data sources inside the application.',
         ],
         tags: ['Sprint 4', 'Security', 'Row-Level Security', 'Column-Level Security', 'SQL Server', 'Research', 'Architecture'],
         sections: [
@@ -350,7 +350,7 @@ const sprints: Sprint[] = [
             points: [
               'The goal of this week was to understand how we can apply security rules to the data shown in the app.',
               'More specifically, we focused on row-level security and column-level security.',
-              'This is important because different users should not always be allowed to see the same data, even when they work in the same application.',
+              'That matters because users working in the same application should not automatically have access to the same data.',
             ],
           },
           {
@@ -374,7 +374,7 @@ const sprints: Sprint[] = [
             points: [
               'Because of that, this week was mainly about learning the concept in depth and testing different technical directions.',
               'The goal was not just to build something quickly, but to understand which approach would be the most practical and maintainable for our application.',
-              'That made this week less about feature completion and more about careful technical investigation.',
+              'As a result, this week was less about feature completion and more about careful technical investigation.',
             ],
           },
         ],
@@ -383,6 +383,389 @@ const sprints: Sprint[] = [
           'This was one of the hardest weeks of the internship so far, mainly because the problem is quite complex and there is no obvious solution.',
           'A big part of this week was going through different options and figuring out which ones actually fit our architecture and the way we work with external data sources.',
           'Even though we do not have the final solution yet, this week did help us understand the security challenge much better and gave us a clearer direction for the next steps.'
+        ],
+      },
+      {
+        week: 2,
+        title: 'Sprint 4 - Week 2: Implementing CLS and RLS with Dynamic Query Logic',
+        date: 'April 2026',
+        introPoints: [
+          'In the second week of sprint 4, we moved from exploration into implementation and started building the actual CLS and RLS flow.',
+          'It remained the most difficult task in the project, because the solution had to stay dynamic and could not be designed around only one specific data source.',
+        ],
+        tags: ['Sprint 4', 'Security', 'RLS', 'CLS', 'Dynamic Queries', 'Architecture', 'External Data Sources'],
+        sections: [
+          {
+            title: 'From Research to Implementation',
+            points: [
+              'After the first week of comparing approaches, we now had to turn those ideas into something that could actually work inside the application.',
+              'Our first layer of security already existed in the LLM flow itself, where the model is guided to respect the configured rules when generating queries.',
+              'That first layer is useful, but not safe enough on its own, so we also needed a second and harder layer that can enforce row-level security and column-level security regardless of LLM behaviour.',
+              'That meant the implementation had to remain flexible enough for multiple external data sources instead of being tightly coupled to one database-specific feature.',
+            ],
+          },
+          {
+            title: 'Choosing a Logic-Driven Solution',
+            points: [
+              'We ended up with an approach where the values of the security rules are stored and then added back into the generated query flow as a hard security layer.',
+              'More specifically, those rule values are applied through a view that sits on top of the generated query.',
+              'This way, we no longer rely only on the LLM to behave correctly, because the final query result is still filtered by logic that we control ourselves.',
+            ],
+          },
+          {
+            title: 'Why This Approach Fits Better',
+            points: [
+              'This solution gives us more control over how restrictions are applied, which is important because the application is meant to work with external data sources in a reusable way.',
+              'It also creates a clearer separation between a softer first layer, where the LLM tries to generate the right query, and a harder second layer, where the application enforces the final restrictions.',
+              'If we had focused too heavily on one database-specific mechanism, we would have solved the problem locally but weakened the long-term architecture.',
+              'Using logic on top of the generated query makes the security model easier to adapt when the data source or query structure changes later on.',
+            ],
+          },
+        ],
+        reflectionTitle: 'Short reflection',
+        reflectionPoints: [
+          'This week confirmed that sprint 4 is still the hardest part of the internship, because every technical choice has architectural consequences.',
+          'What made this work difficult was not only implementing security itself, but also making sure we do not trust the LLM as the only protection layer.',
+          'We needed a version of security that stays dynamic and reusable beyond one specific database setup, while still being strict enough to enforce the final result.',
+          'Even so, it felt like an important step forward, because we now have a solution direction that is based on logic and flexibility rather than on a rigid external dependency.'
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sprint-5',
+    label: 'Sprint 5',
+    weeks: [
+      {
+        week: 1,
+        title: 'Sprint 5 - Week 1: Building Reports from Chat Results',
+        date: 'May 2026',
+        introPoints: [
+          'In the first week of sprint 5, we moved toward a feature that makes the application more valuable beyond a single question-and-answer moment.',
+          'Users can already receive data in a table or in different kinds of charts, and this week our focus was on turning those outputs into reusable report building blocks.',
+        ],
+        tags: ['Sprint 5', 'Reports', 'Charts', 'Tables', 'Frontend', 'UX', 'Data Presentation'],
+        sections: [
+          {
+            title: 'From Single Results to Broader Insight',
+            points: [
+              'Until now, the application was mainly focused on returning one result at a time through the chat flow.',
+              'That already worked well for exploring data, but the next logical step was to make those results easier to collect and compare.',
+              'A single answer can be useful in the moment, but a report becomes much more valuable when different outputs can be brought together in one place.',
+            ],
+          },
+          {
+            title: 'Adding Results to a Report',
+            points: [
+              'The main idea of this feature is simple: when a user asks for data and receives it as a table or as any kind of graph, that result can be added to a report.',
+              'At the moment, a report can contain up to seven separate result components.',
+              'This makes it possible to save multiple result blocks instead of losing them after each separate prompt, while gradually building a report that combines different perspectives on the same dataset or on related datasets.',
+            ],
+          },
+          {
+            title: 'Validation and Sharing',
+            points: [
+              'The purpose is not only to collect results, but also to prepare them for sharing inside the organisation.',
+              'After a report has been validated, it should be possible to share it with other employees so the generated insights can be used more broadly.',
+              'That makes this feature especially relevant, because it turns separate chat results into something that can support communication and decision-making across a team.',
+            ],
+          },
+        ],
+        reflectionTitle: 'Short reflection',
+        reflectionPoints: [
+          'This week felt like an important product step because the application is becoming more practical for real use instead of only answering isolated prompts.',
+          'What I found interesting is that the value is not only in generating a result, but in giving users a way to keep and combine those results in a structured way.',
+          'Even though the feature itself is relatively simple, it makes the application much more valuable in a real workflow, because validated insights can be grouped and shared with other employees.'
+        ],
+      },
+      {
+        week: 2,
+        title: 'Sprint 5 - Week 2: Managing and Sharing Reports',
+        date: 'May 2026',
+        introPoints: [
+          'In the second week of sprint 5, we continued building on the reporting feature by making reports easier to manage after they have been created.',
+          'The focus was no longer only on collecting results in a report, but also on giving users more control over those reports and making them easier to share inside the organisation.',
+        ],
+        tags: ['Sprint 5', 'Reports', 'Sharing', 'Frontend', 'UX', 'Collaboration'],
+        sections: [
+          {
+            title: 'Improving Report Management',
+            points: [
+              'After building the first version of the reporting feature, the next step was to make it more practical to use in a real workflow.',
+              'Users can now manage their reports more easily after creation instead of treating them as fixed output.',
+              'This makes the feature feel less like a temporary storage place for results and more like a real part of the application.',
+            ],
+          },
+          {
+            title: 'Editing and Removing Reports',
+            points: [
+              'We added the ability to rename reports, which makes it easier for users to organise their work and keep a clear overview.',
+              'Reports can now also be deleted when they are no longer needed.',
+              'These are relatively simple actions, but they are important because they make the report flow much more usable in practice.',
+            ],
+          },
+          {
+            title: 'Sharing Inside the Organisation',
+            points: [
+              'Another important step was that reports can now be shared with the internal organisation.',
+              'This means the feature is no longer only about creating personal report collections, but also about distributing validated insights to other employees.',
+              'As a result, the reporting functionality becomes more collaborative and more aligned with how such a product would be used in a company setting.',
+            ],
+          },
+        ],
+        reflectionTitle: 'Short reflection',
+        reflectionPoints: [
+          'This week showed that relatively small product features can still have a strong impact on the usefulness of the application.',
+          'Being able to rename, remove, and share reports makes the feature feel much more complete and practical for day-to-day use.',
+          'It also strengthens the collaborative side of the app, because reports are now becoming something that can move beyond the individual user and be shared within the organisation.',
+          'We also had a Tillit Friday, where everyone in the company came together around midday to look at the overall progress and discuss the past quarter. It was the first time I saw the whole company sitting together like that, and it was interesting to see how people from different roles, such as data engineering, business consulting, and development, all contribute to the bigger picture. Seeing everything together made it much clearer what we are all working toward and what the company has achieved as a whole.'
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sprint-6',
+    label: 'Sprint 6',
+    weeks: [
+      {
+        week: 1,
+        title: 'Sprint 6 - Week 1: Adding Endorsement Requests Before Sharing Reports',
+        date: 'May 2026',
+        introPoints: [
+          'Once the reporting feature was working, the next step was to build the process around controlled sharing.',
+          'A report may be ready from the perspective of its creator, but before it can be shared inside the organisation, it first has to be validated by a data steward.',
+        ],
+        tags: ['Sprint 6', 'Reports', 'Validation', 'Data Steward', 'Endorsement Request', 'Governance'],
+        sections: [
+          {
+            title: 'Why an Extra Validation Step Is Needed',
+            points: [
+              'If every user could immediately share any report, there would be too much risk that incorrect or incomplete information gets distributed inside the organisation.',
+              'Because of that, we introduced an extra control step before sharing is allowed.',
+              'This makes the reporting flow not only more collaborative, but also more reliable and better aligned with how information should be handled in a company environment.',
+            ],
+          },
+          {
+            title: 'The Endorsement Request Flow',
+            points: [
+              'We call this process the endorsement request.',
+              'When a report is created and ready to be shared, the maker first sends an endorsement request instead of sharing it directly.',
+              'That request is then received by a data steward, who reviews the report and validates whether it is ready for wider use.',
+            ],
+          },
+          {
+            title: 'From Approval to Sharing',
+            points: [
+              'Only after the data steward approves the endorsement request can the creator of the report actually share it with the organisation.',
+              'This creates a clear separation between creating content and authorising distribution.',
+              'As a result, the feature becomes more trustworthy, because shared reports are no longer just user-generated output but validated information that passed an internal control step.',
+            ],
+          },
+        ],
+        reflectionTitle: 'Short reflection',
+        reflectionPoints: [
+          'This week showed that building a useful feature is only one part of the work; defining the right control flow around it is just as important.',
+          'The endorsement request may feel like an extra step, but it makes the reporting feature much stronger because it prevents uncontrolled sharing.',
+          'From a coding perspective, this was not one of the most difficult features, because the main work was in backend logic.',
+          'The part that can take much more time is the frontend around such a flow, but in terms of the core feature itself we were able to get it working within a relatively short period.'
+        ],
+      },
+      {
+        week: 2,
+        title: 'Sprint 6 - Week 2: Managing Endorsement Requests',
+        date: 'May 2026',
+        introPoints: [
+          'After implementing the first version of the endorsement request flow, we continued with the next logical step: making those requests manageable.',
+          'Week 1 was mainly about approval itself, while this week focused on editing, updating, and removing endorsement requests when needed.',
+        ],
+        tags: ['Sprint 6', 'Reports', 'Validation', 'Endorsement Request', 'Backend', 'Data Steward'],
+        sections: [
+          {
+            title: 'Building on the Approval Flow',
+            points: [
+              'The first implementation already allowed a report to be submitted for approval before sharing.',
+              'That gave us the base workflow, but in practice a request flow also needs management features around it.',
+              'Without those actions, the process would work, but it would still feel too limited in daily use.',
+            ],
+          },
+          {
+            title: 'Editing and Updating Requests',
+            points: [
+              'This week, we added the ability to edit and update endorsement requests.',
+              'That means the flow is no longer only about sending a request once, but also about adjusting it when something changes.',
+              'It makes the feature more realistic, because approval processes rarely stay completely static from start to finish.',
+            ],
+          },
+          {
+            title: 'Removing Requests',
+            points: [
+              'We also added the ability to remove endorsement requests when they are no longer relevant.',
+              'Just like with the reporting features, this is not very complex on a technical level, but it improves the usability of the flow considerably.',
+              'Together, these management actions make the endorsement request process feel much more complete.',
+            ],
+          },
+        ],
+        reflectionTitle: 'Short reflection',
+        reflectionPoints: [
+          'This week was a natural continuation of the previous one: first the approval flow itself, then the practical actions around it.',
+          'The work was still mostly backend-focused, which is why we could move through it relatively quickly.',
+          'Just like in the previous week, the coding itself was not especially difficult, but a more elaborate frontend around these actions could easily take much more time.',
+          'Even though these additions are not the most complex part of the project, they make the endorsement request feature much more usable in a real workflow.'
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sprint-7',
+    label: 'Sprint 7',
+    weeks: [
+      {
+        week: 1,
+        title: 'Sprint 7 - Week 1: Realising the Limits of a SQL-Only Application',
+        date: 'June 2026',
+        introPoints: [
+          'By this point, we had a working application with a solid flow from data retrieval to reporting and validation.',
+          'At the same time, it became clear that the current setup was still strongly shaped by one important architectural choice: the application was built entirely around SQL-based data access.',
+        ],
+        tags: ['Sprint 7', 'Architecture', 'SQL', 'SqlClient', 'Data Sources', 'Scalability'],
+        sections: [
+          {
+            title: 'A Working App with a Clear Limitation',
+            points: [
+              'Functionally, the application was already doing what it needed to do: users could retrieve data, view results, create reports, and move those reports through a validation flow.',
+              'Still, the backend was built around SQL as the only real data access path.',
+              'That meant the product worked well, but only within a fairly narrow technical scope.',
+            ],
+          },
+          {
+            title: 'How the Current Connection Layer Works',
+            points: [
+              'At the moment, the Microsoft.Data.SqlClient package in .NET is the part that opens the connection to the database.',
+              'The application builds a connection string, SqlClient uses that to create and open a SqlConnection, and once that connection is active, the app can send SQL queries and receive the results.',
+              'In practice, this means SqlClient is the layer that really communicates with SQL Server, and we discovered that the same package could also be used to connect to Fabric, which was very convenient.',
+            ],
+          },
+          {
+            title: 'Why This Became the Next Challenge',
+            points: [
+              'That discovery changed the discussion a bit, because it showed that we did not necessarily need a completely different connection approach to start supporting other platforms.',
+              'One of the first practical steps was to create a connection page where users can fill in variables such as the server name, database name, and password.',
+              'For security reasons, the password is then stored in Azure Key Vault instead of being handled as plain application data.',
+              'By doing that, we can configure the connection much more dynamically instead of hardcoding everything into one fixed setup.',
+              'We tested this approach with multiple demo databases, and the connections worked successfully.',
+              'We also set up a demo Fabric environment to validate the same flow there, and that worked without problems as well.',
+              'From there, we started looking at how the same idea could also be extended toward other platforms, possibly depending on how much time would still be left in our internship.',
+            ],
+          },
+          {
+            title: 'Testing a Databricks Connection',
+            points: [
+              'Alongside the work on SQL Server and Fabric, we were also exploring how to connect the application to Databricks.',
+              'We set up a Databricks test environment and used statement execution to retrieve data.',
+              'In simple terms, statement execution means that the application sends a SQL statement to Databricks through its API, Databricks executes that statement on the configured warehouse or compute environment, and the returned result can then be read back into the application. This allowed us to test whether our app could also retrieve data from Databricks in a structured way, without relying on the exact same connection flow as SQL Server.',
+            ],
+          },
+        ],
+        reflectionTitle: 'Short reflection',
+        reflectionPoints: [
+          'This week was less about adding a visible feature and more about recognising an architectural boundary in the current system.',
+          'The application is already usable, but it was valuable to realise that the existing connection layer could be stretched further than we first expected.',
+          'It was also reassuring to see that this was not only a theoretical idea, because both the demo databases and the demo Fabric setup worked as expected.',
+          'What made this sprint relevant is that it shifted the discussion from only building features to thinking more seriously about portability and future extensibility.',
+          'That makes this a valuable sprint as well, because understanding the limitation is the first step toward designing a more flexible solution.'
+        ],
+      },
+      {
+        week: 2,
+        title: 'Sprint 7 - Week 2: Moving the Connection Flow to Managed Identity',
+        date: 'June 2026',
+        introPoints: [
+          'After getting the dynamic connection flow working, the next step was to move further toward a more secure setup with managed identity.',
+          'Conceptually, this was a good next step, but in practice it turned out to be much harder to validate than the earlier connection work.',
+          'At the same time, this was also one of the final weeks of the internship, so we started testing the application much more aggressively to expose weak spots before the end.',
+        ],
+        tags: ['Sprint 7', 'Managed Identity', 'Azure', 'Security', 'Web API', 'Backend'],
+        sections: [
+          {
+            title: 'Why Managed Identity Matters',
+            points: [
+              'The goal was to let the application connect in a more secure and managed way, without relying on the same kind of direct credential flow everywhere.',
+              'That fits better with how enterprise systems are expected to handle access to services and data sources.',
+              'So even though the app was already working, this was an important step in making the architecture more mature.',
+            ],
+          },
+          {
+            title: 'Difficult to Test Locally',
+            points: [
+              'The difficult part was not only the code itself, but especially the testing setup.',
+              'Our local Web API does not automatically have the same managed identity configuration and permissions as the deployed environment.',
+              'To make this work, the identity behind the API needs the correct permissions in the right places, which made local verification much harder than usual.',
+            ],
+          },
+          {
+            title: 'Working Through Trial and Error',
+            points: [
+              'Because of that, our only realistic way of validating this feature was through trial and error.',
+              'We created pull requests, deployed changes, tested the result, and reverted when something was still wrong.',
+              'It was not the cleanest development flow, but it was the only practical way to gain certainty until we fully understood what configuration was required for it to work correctly.',
+              'During that same period, we were also stress-testing the application more broadly, with the clear intention of making it break so we could uncover vulnerabilities and inconsistencies while there was still time to fix them.',
+            ],
+          },
+        ],
+        reflectionTitle: 'Short reflection',
+        reflectionPoints: [
+          'This week was a good reminder that some features are difficult not because the code is complicated, but because the environment around them is.',
+          'The managed identity flow was something we were able to investigate and push forward ourselves, but it required much more patience than a normal local development cycle.',
+          'The intensive testing was just as valuable, because trying to break the app on purpose helped us expose weak spots that would have been much harder to find through normal usage alone.',
+          'Even though the process involved a lot of trial and error, it was still valuable because it helped us understand much better how identity, permissions, deployment context, and application robustness all interact.'
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sprint-8',
+    label: 'Sprint 8',
+    weeks: [
+      {
+        week: 1,
+        title: 'Sprint 8 - Week 1: Refining the Chat Flow and Preparing the Final Presentation',
+        date: 'June 2026',
+        introPoints: [
+          'In the final week, the focus shifted away from major new features and more toward refinement and preparation.',
+          'We spent time improving the chat experience itself, cleaning up the codebase, and preparing the final presentation of everything we had built during the internship.',
+        ],
+        tags: ['Sprint 8', 'LLM', 'Chat Flow', 'Code Cleanup', 'Presentation', 'Final Delivery'],
+        sections: [
+          {
+            title: 'Improving the LLM Rules',
+            points: [
+              'One part of this week was focused on improving the rules and guidance around the LLM so the chat flow would behave more consistently.',
+              'These adjustments helped the interaction feel smoother and made the responses align better with what we wanted the product to do.',
+              'Even small improvements here can have a visible effect, because the chat experience is such a central part of the application.',
+            ],
+          },
+          {
+            title: 'Cleaning Up the Codebase',
+            points: [
+              'We also removed some dead code that was no longer needed.',
+              'That kind of cleanup may not be very visible from the outside, but it makes the codebase easier to understand and maintain.',
+              'It was a good moment to do that, because by then the overall structure of the application was already much clearer.',
+            ],
+          },
+          {
+            title: 'Preparing for the Final Presentation',
+            points: [
+              'A large part of the week was also about preparing for the final presentation.',
+              'Naturally, everyone at Tillit was curious to see what we had been working on during the past months.',
+              'That made this final preparation important, because we were not only finishing technical work but also shaping how we would present the full story of the project to the company.',
+            ],
+          },
+        ],
+        reflectionTitle: 'Short reflection',
+        reflectionPoints: [
+          'This week felt like a natural closing phase of the internship.',
+          'Instead of building something entirely new, we focused on making the existing application cleaner, smoother, and better prepared for presentation.',
+          'It also made the progress of the past months feel very real, because we had to step back and translate all that work into a story that others in the company could understand and appreciate.'
         ],
       },
     ],
