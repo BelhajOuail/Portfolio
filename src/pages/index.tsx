@@ -33,11 +33,11 @@ const HomePage = () => {
                 <FaGithub size={18} />
                 <span>GitHub</span>
               </a>
-              <a className="socials__link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a className="socials__link" href="https://www.linkedin.com/in/belhaj-ouail/" target="_blank" rel="noopener noreferrer">
                 <FaLinkedinIn size={18} />
                 <span>LinkedIn</span>
               </a>
-              <a className="socials__link" href="mailto:example@email.com">
+              <a className="socials__link" href="mailto:belhaj.ouail1@gmail.com">
                 <IoMdMail size={18} />
                 <span>Email</span>
               </a>
@@ -46,7 +46,7 @@ const HomePage = () => {
 
           <div className="hero__media" aria-hidden="true">
             <div className="profile">
-              <img className="profile__img" src="/placeholder.jpg" alt="" />
+              <img className="profile__img" src="/ouail.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -101,13 +101,13 @@ const HomePage = () => {
           <div className="contact">
             <div className="contact__card">
               <p className="contact__label">Email</p>
-              <a className="contact__value" href="mailto:example@email.com">
-                example@email.com
+              <a className="contact__value" href="mailto:belhaj.ouail1@gmail.com">
+                belhaj.ouail1@gmail.com
               </a>
             </div>
             <div className="contact__card">
               <p className="contact__label">Location</p>
-              <p className="contact__value">Belgium</p>
+              <p className="contact__value">Sint-Niklaas</p>
             </div>
           </div>
         </div>
